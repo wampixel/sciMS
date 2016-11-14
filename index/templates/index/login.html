@@ -1,0 +1,10 @@
+{% extends "index/base.html" %}
+
+{% block content %}
+  <form action="{% url 'index:login' %}" method="post">
+    {% csrf_token %}
+    username: <input type="text" name="username"/>
+    password: <input type="text" name="password"/>
+    <input type="submit" value="connexion">
+  </form>
+{% endblock %}
