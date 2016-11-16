@@ -37,6 +37,7 @@ LOGIN_REDIRECT_URL = 'index:index'
 # Application definition
 
 INSTALLED_APPS = [
+    'article.apps.ArticleConfig',
     'index.apps.IndexConfig',
     'django.contrib.admin',
     'django.contrib.auth',

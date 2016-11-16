@@ -1,6 +1,6 @@
-{% extends "index/base.html" %}
+{% extends "index/index.html" %}
 
-{% block content %}
+{% block auth %}
   <form action="{% url 'index:login' %}" method="post">
     {% csrf_token %}
     username: <input type="text" name="username"/>
