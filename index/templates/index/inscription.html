@@ -1,10 +1,11 @@
 {% extends "index/index.html" %}
 
 {% block auth %}
-  <form action="{% url 'index:login' %}" method="post">
+  <form action="{% url 'index:inscription' %}" method="post">
     {% csrf_token %}
     username: <input type="text" name="username"/>
     password: <input type="text" name="password"/>
-    <input type="submit" value="connexion">
+    confirm your password: <input type="text" name="password_verif"/>
+    <input type="submit" value="Inscription">
   </form>
 {% endblock %}

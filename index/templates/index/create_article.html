@@ -1,0 +1,19 @@
+{% extends "index/index.html" %}
+{% load static %}
+
+{% block title %}sciMS Création d'article{% endblock %}
+
+{% block content %}
+<form action="{% url 'index:inscription' %}" method="post">
+{% csrf_token %}
+Titre : <input type="text" name="title"> </br> 
+Author : <input type="text" name="athor"> </br>
+Date : <input type="date" name="date"> </br>
+Categorie : <input type="text" name="categorie"> </br>
+Abstract : <input type="text" name="abstract"> </br>
+Key Words : <input type="textarea" name="kword" placeholder="format: a, b, c"> </br>
+Content : <input type="textarea" name="content" placeholder="format: for a section -> \section, for a subsection -> \subsection "> </br>
+Ref : <input type="textarea" name="ref" placeholder="format: ref1, ref2, ref3"> </br>
+
+</form>
+{% endblock %}
