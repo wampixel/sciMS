@@ -24,14 +24,14 @@
               <a href="{% url 'index:user' user.id %}">{{user.username}}</a>
             </li>
             <li classe="act_user">
-              <a href="{% url 'index:' %}">Créer un article</a>
+              <a href="{% url 'article:edit' %}">Créer un article</a>
             </li>
             <li classe="act_user">
-              <a href="{% url 'index:' %}">Retrouver vos articles</a>
+              <a href="{% url 'article:user_cat' user_id %}">mes articles</a>
           {% else %}
             <li>
               <a href="{% url 'index:login' %}">se connecter</a>
-              <a href="{% url 'index:inscription' %}">S'inscrire</a>
+              <a href="{% url 'index:registration' %}">S'inscrire</a>
             </li>
           {% endif %}
         </ul>

@@ -10,3 +10,9 @@ def categorie(request, categorie_id):
 
 def all_categorie(request):
     return HttpResponse("bientot la liste des categories")
+
+def edit(request):
+    return HttpResponse("a venir edit")
+
+def user_article(request, user_id):
+    return HttpResponse("a venir user_article")
