@@ -11,7 +11,8 @@ def index(request):
     return render(request, "index/index.html")
 
 def username(request, user_id):
-    return HttpResponse("la page user %s" % user_id)
+    obj = get_object_or_404(User, id=user_id)
+    return render(request, 'index/index.html', {'usr': obj})
 
 def create_user(request):
     if request.method == 'POST':  # S'il s'agit d'une requête POST

@@ -1,0 +1,12 @@
+footer {
+  text-align: center;
+}
+
+h1 > a {
+  color: black;
+}
+
+hr {
+  border-color: #9B9B9B;
+}
+

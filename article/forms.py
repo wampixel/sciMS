@@ -5,5 +5,5 @@ class create_article(forms.Form):
     titre = forms.CharField()
     Auteur = forms.CharField()
     date = forms.DateField()
-    trololo = forms.ChoiceField(choices=(('', '___'),
+    trololo = forms.ChoiceField(choices=(('', '---'),
                                         ('Cc', 'Coucou')))
