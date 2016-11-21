@@ -8,7 +8,7 @@ from django.shortcuts import redirect
 from .forms import registration
 
 def index(request):
-    return render(request, "index/base.html")
+    return render(request, "index/index.html")
 
 def username(request, user_id):
     return HttpResponse("la page user %s" % user_id)
@@ -33,4 +33,4 @@ def create_user(request):
     else: # Si ce n'est pas du POST, c'est probablement une requête GET
         form = registration()  # Nous créons un formulaire vide
 
-    return render(request, 'index/registration.html', locals())
+    return render(request, 'index/registration.html', {'form': form})

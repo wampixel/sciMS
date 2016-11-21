@@ -1,0 +1,10 @@
+{% extends 'index/base.html' %}
+{% load static %}
+
+{% block content %}
+  <form action="{% url 'article:edit' %}", method="POST">
+    {% csrf_token %}
+    {{ formu.as_p }}
+    <input type="submit" value="creer ton article frere">
+  </form>
+{% endblock %}
