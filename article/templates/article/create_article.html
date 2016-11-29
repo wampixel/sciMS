@@ -4,7 +4,8 @@
 {% block content %}
   <form action="{% url 'article:edit' %}", method="POST">
     {% csrf_token %}
-    {{ formu.as_p }}
-    <input type="submit" value="creer ton article frere">
+    <label for ={{ form.titre }}">titre</label>
+    {{ formu.titre }}
+    <input type="submit" value="creer l'article">
   </form>
 {% endblock %}
