@@ -1,10 +1,16 @@
 {% extends "index/index.html" %}
 
 {% block auth %}
-  <form action="{% url 'index:login' %}" method="post">
+  <form action="{% url 'index:login' %}" method="post" class='form-inline'>
     {% csrf_token %}
-    username: <input type="text" name="username"/>
-    password: <input type="password" name="password"/>
-    <input type="submit" value="connexion">
+    <div class='form-group'>
+      <label for='usrname'>username</label>
+      <input type="text" name="username" class='form-control' id='usrname' placeholder="Username" />
+    </div>
+    <div class='form-group'>
+      <label for='passwd'>password</label>
+      <input type="password" name="password" class='form-control' id='passwd' placeholder="password" />
+    </div>
+    <input type="submit" class='btn btn-primary btn-md' value="connexion">
   </form>
 {% endblock %}
