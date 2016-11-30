@@ -22,7 +22,6 @@ def edit(request):
         form = create_article(request.POST)
         if form.is_valid():
             print("todo")
-    
     else:
         form = create_article()
 
