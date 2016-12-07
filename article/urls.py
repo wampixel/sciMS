@@ -13,7 +13,7 @@ urlpatterns = [
     #article/edit/
     url(r'^edit/', views.edit, name="edit"),
     #article/user_article/[0-9]*
-    url(r'^user_article/(?P<user_id>[0-9]*)/', views.user_article, name="user_art"),
+    url(r'^user_article/(?P<user_id>[0-9]+)/', views.user_article, name="user_art"),
     #article/read/[0-9]*/
-    url(r'^read/(?P<art_id>[0-9]*)/', views.read, name='read'),    
+    url(r'^read/(?P<art_id>[0-9]+)/', views.read, name='read'),    
 ]

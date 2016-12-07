@@ -36,8 +36,10 @@
               </a>
             {% endif %}
           </div>
-          <form class="input-group col-md-4">
-            <input type="text" class="form-control" placeholder="Search">
+          <form class="input-group col-md-4" action="{% url 'index:search' %}" method="POST">
+          {% csrf_token %}
+            <input type="text" class="form-control"  name="str_srch" placeholder="Search"/>
+
             <div class="input-group-btn">
               <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
             </div>

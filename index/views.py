@@ -43,3 +43,12 @@ def create_user(request):
         form = registration()  # Nous créons un formulaire vide
 
     return render(request, 'index/registration.html', {'form': form})
+
+def search(request):
+    if request.method == 'POST':
+        str_s = request.POST['str_srch']
+        print(str_s)
+    else:
+        print("GET")
+        # raise Http404
+    return HttpResponse("TODO Search")

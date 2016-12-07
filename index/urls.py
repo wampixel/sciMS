@@ -14,4 +14,6 @@ urlpatterns = [
     url(r'^user/(?P<user_id>[0-9]+)/', views.username, name="user"),
     #index/register/
     url(r'^register/', views.create_user, name="registration"),
+    #index/search/[A-Za-z0-9]*
+    url(r'^search/', views.search, name="search"),
 ]
