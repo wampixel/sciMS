@@ -4,7 +4,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>{% block title %}sciMS{% endblock %}</title>
+    <title>
+      SciMS |{% block title %}{% endblock %}
+    </title>
     <link rel="stylesheet" type="text/css" href="{% static 'index/libs/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'index/css/base.css' %}">
     <link rel="stylesheet" href="{% static 'index/libs/fontAwesome/css/font-awesome.min.css' %}">
@@ -19,11 +21,20 @@
         </div>
         <div class="row">
           <div class="col-md-8">
-            <button class="btn btn-primary btn-md">coucou</button>
-            <button class="btn btn-primary btn-md">coucou</button>
-            <button class="btn btn-primary btn-md">coucou</button>
-            <button class="btn btn-primary btn-md">coucou</button>
-            <button class="btn btn-primary btn-md">coucou</button>
+            {% if cat %}
+              {% for c in cat %}
+                <a href="{%url 'article:categorie' c.id %}">
+                  <button class="btn btn-primary btn-md">
+                    {{c.cat}}
+                  </button>
+                </a>
+              {% endfor %}
+              <a href="{% url 'article:categorie_all' %}">
+                <button class="btn btn-primary btn-md">
+                  toutes les categories
+                </button>
+              </a>
+            {% endif %}
           </div>
           <form class="input-group col-md-4">
             <input type="text" class="form-control" placeholder="Search">
@@ -52,7 +63,7 @@
                     <a class="dropdown-item" href="{% url 'article:edit' %}"><i class="fa fa-pencil-square fa-md"></i> Créer un article</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="{% url 'article:user_cat' user_id %}"><i class="fa fa-folder fa-md"></i> mes articles</a>
+                    <a class="dropdown-item" href="{% url 'article:user_art' user.id %}"><i class="fa fa-folder fa-md"></i> mes articles</a>
                   </li>
                 </ul>
               </li>

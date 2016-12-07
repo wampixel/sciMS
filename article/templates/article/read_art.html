@@ -1,0 +1,43 @@
+{% extends 'index/base.html' %}
+
+{% block title %} {{art.title}}{% endblock %}
+
+{% block content %}
+  <div>
+    <div>
+      <p>
+        <em>article posté le {{art.add_date}} par {{writer.username}}</em>
+      </p>
+      {% if art.pub_date %}
+        <p> 
+          <em>publication originale le {{art.pub_date}}</em>
+        </p>
+      {% endif %}
+    <div>
+      <h4>mots clefs</h4>
+        {% if art.keyword %}
+          {{ art.keyword }}
+        {% else %}
+          <p><em>aucun mot clef pour cet article</em></p>
+        {% endif %}
+    </div>
+    <div>
+      <h4>abstract</h4>
+        {% if art.abstract %}
+          {{art.abstract}}
+        {% else %}
+          <p><em>aucun résumé</em></p>
+        {% endif %}
+    </div>
+    <div class="well">
+      {{art.content}}
+    </div>
+    <div>
+      {{art.}}
+    </div>
+
+    <div>
+      AJOUTER MODIFICATION ARTICLE
+    </div>
+  </div>
+{% endblock %}

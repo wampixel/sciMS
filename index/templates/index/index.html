@@ -1,6 +1,25 @@
 {% extends "index/base.html" %}
 {% load static %}
 
+{% block title %} Home {% endblock %}
+
 {% block content %}
-  ici bientot sous vos yeux ebahis SCIMS le nouveau truc tout nul du web<br/>
+  <div class="row">
+    <div class="col-lg-5">
+      <p>derniers articles ajoutés</p>
+      <ul>
+        {% for art in l_art %}
+          <li><a href="{% url 'article:read' art.id %}">{{art.title}}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col-lg-5">
+      <p>dernières catégories ajoutées</p>
+      <ul>
+        {% for cat in l_cat %}
+          <li><a href="{% url 'article:categorie' cat.id %}">{{ cat.cat }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
 {% endblock %}

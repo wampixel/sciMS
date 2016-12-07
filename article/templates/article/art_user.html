@@ -1,0 +1,19 @@
+{% extends 'index/base.html' %}
+{% load static %}
+
+{% block title %}Mes articles{% endblock %}
+
+{% block content %}
+  {% if l_art %}
+    <ul>
+    {% for art in l_art %}
+      <li>
+        <a href="{% url 'article:read' art.id %}">{{ art.title }}</a> 
+        <em>({{ art.date_pub }})</em>
+      </li>
+    {% endfor %}
+  {% else %}
+    <p>vous n'avez aucun article pour le moment</p>
+    <a href="{% url 'article:edit' %}">creez en un ici</a>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'index/base.html' %}
+
+{% block title %}categories {% endblock %}
+
+{% block content %}
+  <ul>
+  {% for c in l_cat %}
+    <li><a href="{% url 'article:categorie' c.id %}">{{ c.cat }}</a></li>
+  {% endfor %}
+  </ul>
+{% endblock %}

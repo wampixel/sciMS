@@ -1,10 +1,12 @@
 {% extends 'index/base.html' %}
 {% load static %}
 
+{% block title %}Ecrire un article{% endblock %}
+
 {% block content %}
   <form action="{% url 'article:edit' %}", method="POST">
     {% csrf_token %}
-    {{ formu.as_p}}
+    {{ form.as_p}}
     <input type="submit" class="btn btn-primary btn-md" value="creer l'article">
   </form>
 {% endblock %}

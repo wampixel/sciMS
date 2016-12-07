@@ -1,0 +1,19 @@
+{% extends 'index/base.html' %}
+{% load static %}
+
+{%block title %} {{cat_name.cat}} {% endblock %}
+
+{% block content %}
+  {% if l_art %}
+    {% for art in l_art %}
+      <li>
+          <div>
+            <a href="{% url 'article:read' art.id %}">{{ art.title }}</a> 
+            <em>{{art.author}} ({{art.date_pub }})</em>
+          </div>
+      </li>
+    {% endfor %}
+  {% else %}
+    <p>Aucun article present dans cette categorie</p>
+  {% endif %}
+{% endblock %}

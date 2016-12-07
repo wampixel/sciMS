@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-
 #pour que mysqldb soit utilisable en python3
 import pymysql
 pymysql.install_as_MySQLdb()
@@ -34,6 +33,8 @@ ALLOWED_HOSTS = []
 #redirection after login
 LOGIN_REDIRECT_URL = 'index:index'
 
+#redirection si pas authentifie
+LOGIN_URL = 'index:login'
 # Application definition
 
 INSTALLED_APPS = [

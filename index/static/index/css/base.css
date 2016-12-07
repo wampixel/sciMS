@@ -28,6 +28,10 @@ hr {
   border-color: #9B9B9B;
 }
 
-li {
-  list-style-type: none;
+div > em {
+  color: gray;
+}
+
+li > em {
+  color: gray;
 }
