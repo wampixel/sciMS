@@ -16,7 +16,10 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
+from index.views import index as art_index
+
 urlpatterns = [
+    url(r'^$', art_index),
     url(r'^index/', include('index.urls')),
     url(r'^article/', include('article.urls')),
     url(r'^admin/', admin.site.urls),

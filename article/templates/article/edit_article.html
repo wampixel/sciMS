@@ -4,7 +4,7 @@
 {% block title %}Ecrire un article{% endblock %}
 
 {% block content %}
-  <form action="{% url 'article:create' %}", method="POST">
+  <form action="{% url 'article:edit' art.id %}", method="POST">
     {% csrf_token %}
     {{ form.as_p}}
     <input type="submit" class="btn btn-primary btn-md" value="editer l'article">

@@ -1,0 +1,56 @@
+{% extends 'index/base.html' %}
+
+{% block title %} {{str_src}} {% endblock %}
+
+{% block content %}
+  <div>
+    <h3>
+      resultat de la recherche <em>{{str_src}}</em>
+    </h3>
+    <div class="row">
+      <div class="col-lg-5">
+        <h4>Categories</h4>
+        {% if l_cat %}
+          <ul>
+            {% for r_cat in l_cat %}
+              <li>
+                <a href="{% url 'article:categorie' r_cat.id %}">{{r_cat.cat}}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>Aucunes catégories trouvée</p>
+        {% endif %}
+      </div>
+      <div class="col-lg-5">
+        <h4>Articles</h4>
+        {% if l_art %}
+          <ul>
+          {% for r_art in l_art %}
+            <li>
+              <a href="{% url 'article:read' r_art.id %}">{{ r_art.title }}</a>
+            </li>
+          {% endfor %}
+          </ul>
+        {% else %}
+          <p> Aucuns Articles trouvé</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div col="row">
+      <h4>Utilisateurs</h4>
+      {% if l_usr %}
+        {% for r_usr in l_usr %}
+          <li>
+            <a href="{% url 'article:user_art' r_usr.id %}">{{r_usr.username}}</a>
+          </li>
+        {% endfor %}
+
+      {% else %}
+        <p>Aucuns utilisateurs trouvé</p>
+      {% endif %}
+    </div>
+  </div>
+
+{% endblock %}

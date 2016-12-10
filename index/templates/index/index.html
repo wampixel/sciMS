@@ -11,6 +11,11 @@
         {% for art in l_art %}
           <li><a href="{% url 'article:read' art.id %}">{{art.title}}</a></li>
         {% endfor %}
+        <a href= "{% url 'article:article' %}"> 
+              <button class="btn btn-primary btn-md">
+                Tous les articles
+              </button>
+            </a>
       </ul>
     </div>
     <div class="col-lg-5">
@@ -19,6 +24,11 @@
         {% for cat in l_cat %}
           <li><a href="{% url 'article:categorie' cat.id %}">{{ cat.cat }}</a></li>
         {% endfor %}
+      <a href= "{% url 'article:categorie_all' %}"> 
+              <button class="btn btn-primary btn-md">
+                Toutes les categories
+              </button>
+            </a>
       </ul>
     </div>
   </div>

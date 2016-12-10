@@ -1,6 +1,16 @@
 {% extends 'index/base.html' %}
 
-{% block content %}
-  ici on va mettre la liste des articles
+{% block title %}articles {% endblock %}
 
+{% block content %}
+  {% if l_art %}
+    <p>Tous les articles</p>
+    <ul>
+    {% for art in l_art %}
+      <li><a href="{% url 'article:read' art.id %}">{{ art.title }}</a></li>
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p>Aucun articles existant</p>
+  {% endif %}
 {% endblock %}

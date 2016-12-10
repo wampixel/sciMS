@@ -3,6 +3,7 @@
 {% block title %}categories {% endblock %}
 
 {% block content %}
+  <p>Toutes les categories</p>
   <ul>
   {% for c in l_cat %}
     <li><a href="{% url 'article:categorie' c.id %}">{{ c.cat }}</a></li>

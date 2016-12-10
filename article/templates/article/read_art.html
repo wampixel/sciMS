@@ -5,9 +5,26 @@
 {% block content %}
   <div>
     <div>
+      <div>
+        {% for message in messages %}
+          <div class="container">
+            <div class="row">  
+              <div class="col-lg-5">
+                <div class="alert alert-warning">
+                  <a class="close" data-dismiss="alert">×</a> 
+                  <em>{{ message }}</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
       <p>
         <em>article posté le {{art.add_date}} par {{writer.username}}</em>
       </p>
+
+      <h3> {{art.title}} </h3>
+
       {% if art.pub_date %}
         <p> 
           <em>publication originale le {{art.pub_date}}</em>
@@ -30,14 +47,18 @@
         {% endif %}
     </div>
     <div class="well">
-      {{art.content}}
+      {% autoescape off %}
+        {{ art.content }}
+      {% endautoescape %}
     </div>
     <div>
       {{art.}}
     </div>
 
     <div>
-      AJOUTER MODIFICATION ARTICLE
+      <a href="{% url 'article:edit' art.id %}">
+        <button>modifier</button>
+      </a>
     </div>
   </div>
 {% endblock %}

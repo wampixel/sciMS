@@ -29,12 +29,12 @@
                   </button>
                 </a>
               {% endfor %}
-              <a href="{% url 'article:categorie_all' %}">
-                <button class="btn btn-primary btn-md">
-                  toutes les categories
-                </button>
-              </a>
             {% endif %}
+            <a href="{% url 'article:categorie_all' %}">
+              <button class="btn btn-primary btn-md">
+                toutes les categories
+              </button>
+            </a>
           </div>
           <form class="input-group col-md-4" action="{% url 'index:search' %}" method="POST">
           {% csrf_token %}
@@ -62,7 +62,7 @@
                     <a class="dropdown-item" href="{% url 'index:logout' %}"><i class="fa fa-sign-out fa-md"></i> se deconnecter</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="{% url 'article:edit' %}"><i class="fa fa-pencil-square fa-md"></i> Créer un article</a>
+                    <a class="dropdown-item" href="{% url 'article:create' %}"><i class="fa fa-pencil-square fa-md"></i> Créer un article</a>
                   </li>
                   <li>
                     <a class="dropdown-item" href="{% url 'article:user_art' user.id %}"><i class="fa fa-folder fa-md"></i> mes articles</a>
@@ -77,9 +77,10 @@
                   <a href="{% url 'index:registration' %}"><i class="fa fa-user-plus fa-md"></i> S'inscrire</a>
                 </li>
               {% endif %}
-
             </ul>
           </nav>
+          <li>
+       
         {% endblock %}
         <section class="col-md-9">
             
