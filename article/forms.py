@@ -9,10 +9,7 @@ class create_article(forms.Form):
     auteur = forms.CharField(label="Auteur",
                 widget= forms.TextInput(attrs={'class': 'form-control'}))
     date = forms.DateField(label="date",
-                widget=forms.DateInput(attrs={'class': 'form-control'}))
-    texte = forms.CharField(label="texte", 
-                widget=forms.Textarea(attrs={'class': 'form-control'}))
-    
+                widget=forms.DateInput(attrs={'class': 'form-control'})) 
     tmp = Categories.objects.all()
     cat = []
     for c in tmp :
@@ -20,4 +17,7 @@ class create_article(forms.Form):
 
     categories = forms.ChoiceField(label="categories", 
                                    choices=cat,
-                widget=forms.Select(attrs={'class': ''}))
+                widget=forms.Select(attrs={'class': 'form-control'}))
+    sommaire = forms.NullBooleanField(label="generer un sommaire", required=False,
+                widget=forms.CheckboxInput(attrs={'class': 'checkbox-inline',}))
+    hidden_content=forms.CharField(widget=forms.HiddenInput(attrs={'id': 'hidden_content'}))

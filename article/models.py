@@ -14,6 +14,7 @@ class Articles(models.Model):
     categories = models.ForeignKey('categories', on_delete=models.CASCADE)
     abstract   = models.CharField(max_length=1000)
     keyword    = models.CharField(max_length=1000)
-    content    = models.CharField(max_length=100)
+    content    = models.CharField(max_length=100000)
     ref        = models.CharField(max_length=1000)
     writer     = models.IntegerField(default=0)
+    summary    = models.CharField(max_length=1000, default="")

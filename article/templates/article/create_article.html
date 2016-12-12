@@ -6,7 +6,55 @@
 {% block content %}
   <form action="{% url 'article:create' %}", method="POST">
     {% csrf_token %}
-    {{ form.as_p}}
-    <input type="submit" class="btn btn-primary btn-md" value="editer l'article">
+
+       {{ form.as_p}}
+    <div class="well">
+      <ul class="list-inline liste-unstyled">
+        <li>
+          <input type="button" value="g" style="font-weight:bold;" id="bouton_bold" onclick="cmd('Bold');" class="btn btn-primary"/>
+          <input type="button" value="i" style="font-style:italic;" id="bouton_it" onclick="cmd('italic');" class="btn btn-primary"/>
+          <input type="button" value="s" style="text-decoration: underline;" id="bouton_und" onclick="cmd('underline');" class="btn btn-primary"/>
+          <input type="button" value="text" style="text-decoration: line-through;" id="bouton_stri" onclick="cmd('strikethrough');" class="btn btn-primary"/>
+        </li>
+        <li>
+          <div onclick="cmd('justifyright');" class="btn btn-primary">
+            <i class="fa fa-align-right" aria-hidden="true"></i>
+          </div>
+          <div onclick="cmd('justifycenter');" class="btn btn-primary">
+            <i class="fa fa-align-center" aria-hidden="true"></i>
+          </div>
+          <div onclick="cmd('justifyleft');" class="btn btn-primary">
+            <i class="fa fa-align-left" aria-hidden="true"></i>
+          </div>
+          <div onclick="cmd('justifyfull');" class="btn btn-primary">
+            <i class="fa fa-align-justify" aria-hidden="true"></i>
+          </div>
+        </li>
+        <li>
+          <div onclick="cmd('insertunorderedlist');" class="btn btn-primary">
+            <i class="fa fa-list-ul" aria-hidden="true"></i>
+          </div>
+          <div onclick="cmd('insertorderedlist');" class="btn btn-primary">
+            <i class="fa fa-list-ol" aria-hidden="true"></i>
+          </div>
+        </li>
+        <li>
+          <input type="button" name="bouton_lien" value="lien" onclick="cmd('createLink');" class="btn btn-primary"/>
+        </li>
+        <li>
+          <select class="form-control" onchange="cmd('heading', this.value);">
+            <option value="">titre</option>
+            <option value="h1">Titre 1</option>
+            <option value="h2">Titre 2</option>
+            <option value="h3">Titre 3</option>
+          </select>
+        </li>
+
+      </ul>
+      <div contenteditable="True" id="div_edit_art" class="form-control">
+          article
+      </div>
+    </div>
+    <input type="submit" class="btn btn-primary btn-md" value="editer l'article" onclick="result();">
   </form>
 {% endblock %}
