@@ -68,13 +68,15 @@ def edit(request, id_art=0):
                 art.title      = form.cleaned_data['titre']
                 art.author     = form.cleaned_data['auteur']
                 art.date_pub   = form.cleaned_data['date']
-                art.content    = form.cleaned_data['texte']
-                cat_id = form.cleaned_data['categories']
+                content        = form.cleaned_data['hidden_content'] 
+                art.content    = content
+                cat_id         = form.cleaned_data['categories']
 
                 art.categories_id = cat_id
                 art.save()
                 
         else:
+
             form = create_article(initial={'titre': art.title,
                                              'auteur': art.author,
                                              'date': art.date_pub,
@@ -100,7 +102,8 @@ def create(request):
             title    = form.cleaned_data['titre']
             date     = form.cleaned_data['date']
             categ_id = form.cleaned_data['categories']
-            content  = form.cleaned_data['hidden_content'] 
+            tmp_content  = form.cleaned_data['hidden_content'] 
+            content = '<article>'+tmp_content+'</article>'
             art = Articles(title=title,
                            author=auth,
                            date_pub=date,
@@ -108,8 +111,7 @@ def create(request):
                            content=content,
                            writer=usr.id)
             art.save()
-            tmp = '<article>'+content+'</article>'
-            print(tmp)
+
             return HttpResponseRedirect('/article/read/%s/' % art.id)
     else:
         form = create_article()
