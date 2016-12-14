@@ -37,7 +37,6 @@ li > em {
 }
 
 #div_edit_art {
-  resize: both;
   overflow: auto;
-  height: auto;
+  height: 40em;
 }

@@ -1,6 +1,6 @@
 from django.db import models
 import datetime
-# Create your models here.
+
 class Categories(models.Model):
     id  = models.AutoField(primary_key=True)
     cat = models.CharField(max_length=50)
