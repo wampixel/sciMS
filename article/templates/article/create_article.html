@@ -7,17 +7,17 @@
   <form action="{% url 'article:create' %}", method="POST">
     {% csrf_token %}
 
-       {{ form.as_p}}
+    {{ form.as_p}}
     <div class="well">
       <ul class="list-inline liste-unstyled">
         <li>
-          <input type="button" value="g" style="font-weight:bold;" id="bouton_bold" onclick="cmd('Bold');" class="btn btn-primary"/>
+          <input type="button" value="g" style="font-weight:bold;" id="bouton_bold" onclick="cmd('bold');" class="btn btn-primary"/>
           <input type="button" value="i" style="font-style:italic;" id="bouton_it" onclick="cmd('italic');" class="btn btn-primary"/>
           <input type="button" value="s" style="text-decoration: underline;" id="bouton_und" onclick="cmd('underline');" class="btn btn-primary"/>
           <input type="button" value="text" style="text-decoration: line-through;" id="bouton_stri" onclick="cmd('strikethrough');" class="btn btn-primary"/>
         </li>
         <li>
-          <div onclick="cmd('justifyright');" class="btn btn-primary">
+          <div onclick="cmd('justifyright');" class="btn btn-primary" id="bouton-rig">
             <i class="fa fa-align-right" aria-hidden="true"></i>
           </div>
           <div onclick="cmd('justifycenter');" class="btn btn-primary">

@@ -1,12 +1,15 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.messages import error
+
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404, HttpResponseRedirect
-from django.contrib.auth.models import User
-from django.contrib.messages import error
+
 import datetime
 
 from .models import Categories, Articles
-from .forms import create_article
+from .forms import create_article, create_cat
 
 # Create your views here.
 def article(request):
@@ -33,11 +36,25 @@ def all_categorie(request):
     
     return render(request, "article/categorie_list.html", {'cat': cat, 'l_cat': cat_l})
 
-
+@staff_member_required(login_url='index:login')
 def create_categorie(request) :
-    return HttpResponse("TODO")
+    cat = Categories.objects.all()[:5]
 
-@login_required
+    if request.method == "POST":
+        form = create_cat(request.POST)
+        if form.is_valid():
+            cat_name = form.cleaned_data['categorie']
+
+            cat = Categories(cat=cat_name)
+            cat.save()
+
+            return HttpResponseRedirect('/index/')
+    else :
+        form = create_cat()
+
+    return render(request, 'article/create_categorie.html', {'cat' : cat, 'form': form})
+
+@login_required(login_url='index:login')
 def user_article(request, user_id):
     cat = Categories.objects.all()[:5]
     art_user = Articles.objects.filter(writer=user_id)
@@ -55,7 +72,7 @@ def edit(request, id_art=0):
         
         if art.writer != usr.id:
             error(request, 'impossible de modifier cet article, vous n\'avez pas les droits')
-            return HttpResponseRedirect('/article/read/%s'% id_art)
+            return HttpResponseRedirect('/article/read/%s/'% id_art)
         if request.method == 'POST':
             form = create_article(request.POST, 
                                   initial={'titre': art.title,
@@ -71,12 +88,11 @@ def edit(request, id_art=0):
                 content        = form.cleaned_data['hidden_content'] 
                 art.content    = content
                 cat_id         = form.cleaned_data['categories']
-
                 art.categories_id = cat_id
                 art.save()
-                
-        else:
 
+                return HttpResponseRedirect('/article/read/%s/'% id_art)
+        else:
             form = create_article(initial={'titre': art.title,
                                              'auteur': art.author,
                                              'date': art.date_pub,
@@ -90,7 +106,6 @@ def edit(request, id_art=0):
                                                          'form': form,
                                                          'art': art,
                                                         })
-
 @login_required
 def create(request):
     cat = Categories.objects.all()[:5]

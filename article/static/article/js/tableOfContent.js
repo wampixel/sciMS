@@ -6,7 +6,7 @@ function generateSummary() {
     list_tags = ["H1", "H2", "H3", "H4", "H5", "H6"];
 
     // Section parent de l'article dont ses fils sont à analyser
-    tag_section = "SECTION";
+    tag_section = "DIV";
 
     // Chercher <article> dans la page
     var article = document.getElementsByTagName("article")[0];

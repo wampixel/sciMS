@@ -14,6 +14,6 @@
     {% endfor %}
   {% else %}
     <p>vous n'avez aucun article pour le moment</p>
-    <a href="{% url 'article:edit' %}">creez en un ici</a>
+    <a href="{% url 'article:create' %}">creez en un ici</a>
   {% endif %}
 {% endblock %}

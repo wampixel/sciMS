@@ -1,0 +1,13 @@
+{% extends 'index/base.html' %}
+{% load static %}
+
+{% block title %} creer une categorie{% endblock %}
+
+{% block content %}
+  <form  action="{% url 'article:create_cat' %}" method="POST">
+    {% csrf_token %}
+
+    {{form.as_p}}
+    <input type="submit" class="btn btn-primary btn-md" value="creer la categorie">
+  </form>
+{% endblock %}

@@ -17,4 +17,3 @@ class Articles(models.Model):
     content    = models.CharField(max_length=100000)
     ref        = models.CharField(max_length=1000)
     writer     = models.IntegerField(default=0)
-    summary    = models.CharField(max_length=1000, default="")

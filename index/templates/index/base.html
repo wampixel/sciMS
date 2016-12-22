@@ -64,6 +64,11 @@
                   <li>
                     <a class="dropdown-item" href="{% url 'article:create' %}"><i class="fa fa-pencil-square fa-md"></i> Créer un article</a>
                   </li>
+                  {% if user.is_superuser %}
+                    <li>
+                      <a class="dropdown-item" href="{% url 'article:create_cat' %}"><i class="fa fa-pencil-square fa-md"></i> Creer une categorie</a>
+                    </li>
+                  {% endif %}
                   <li>
                     <a class="dropdown-item" href="{% url 'article:user_art' user.id %}"><i class="fa fa-folder fa-md"></i> mes articles</a>
                   </li>
