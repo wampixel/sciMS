@@ -85,9 +85,9 @@ WSGI_APPLICATION = 'sciMS.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sciMS',
-        'USER': 'sciMS',
-        'PASSWORD': '&smics2016',
+        'NAME': 'projet',
+        'USER': 'projet',
+        'PASSWORD': 'tejorp',
         'HOST': 'localhost',
         'PORT': '',
     }
